@@ -8,6 +8,9 @@ import { ProductFormComponent } from './products/product-form/product-form.compo
 import { FormsModule } from '@angular/forms';
 import { CurrencyMaskInputMode, NgxCurrencyModule } from 'ngx-currency';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ClientesComponent } from './clientes/clientes.component';
+import { ClientesFormComponent } from './clientes/clientes-form/clientes-form.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 
@@ -21,6 +24,9 @@ const rotas: Routes = [
       },
       {
         path: 'products', component: ProductsComponent
+      },
+      {
+        path: 'clientes', component: ClientesComponent
       }
     ] 
   },
@@ -28,12 +34,13 @@ const rotas: Routes = [
 ]
 
 @NgModule({
-  declarations: [AdminComponent, HomeComponent, ProductsComponent, ProductFormComponent],
+  declarations: [AdminComponent, HomeComponent, ProductsComponent, ProductFormComponent, ClientesComponent, ClientesFormComponent],
   imports: [
     CommonModule,
     FormsModule,
     RouterModule.forChild(rotas),
     NgbModule,
+    NgxMaskModule.forRoot(),
     NgxCurrencyModule.forRoot({
       align: "right",
       allowNegative: true,

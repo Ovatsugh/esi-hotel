@@ -59,9 +59,7 @@ export class ProductsComponent implements OnInit {
     })
   }
 
-
-
-
+  
   open(item = {}) {
     const modalRef = this.modalCtrl.open(ProductFormComponent, { size: "md", backdrop: "static" })
     modalRef.componentInstance.data = item

@@ -1,0 +1,82 @@
+<form #form="ngForm">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Cadastro de Cliente</h4>
+        <button (click)="close()" type="button" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-sm-3 form-group">
+                <span>Tipo:</span>
+                <select class="form-control" [(ngModel)]="dados.tipo" name="tipo">
+                    <option value="1">Pessoa Fisica</option>
+                    <option value="2">Pessoa Juridica</option>
+                </select>
+            </div>
+            <div class="col-sm-5 form-group">
+                <span>{{dados.tipo == 1 ? 'Nome completo': 'Razão social'}}:</span>
+                <input type="text" class="form-control" [(ngModel)]="dados.razao" name="razao">
+            </div>
+            <div class="col-sm-4 form-group">
+                <span>{{dados.tipo == 1 ? 'Apelido': 'Nome fantasia'}}:</span>
+                <input type="text" class="form-control" [(ngModel)]="dados.fantasia" name="fantasia">
+            </div>
+            <div class="col-sm-4 form-group">
+                <span>{{dados.tipo == 1 ? 'CPF': 'CNPJ'}}:</span>
+                <input type="tel" class="form-control" [mask]="dados.tipo == 1?'000.000.000-00':'00.000.000/0000-00'"
+                    [(ngModel)]="dados.cnpj" name="cnpj">
+            </div>
+            <div class="col-sm-4 form-group">
+                <span>Telefone:</span>
+                <input type="tel" class="form-control" mask="(00) 00000-0000" [(ngModel)]="dados.telefone" name="telefone">
+            </div>
+            <div class="col-sm-12 form-group">
+                <span>E-mail:</span>
+                <input type="email" class="form-control" [(ngModel)]="dados.email" name="email">
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-3 form-group">
+                <span>Cep:</span>
+                <input type="number" class="form-control" mask="00.000-000" [(ngModel)]="dados.cep" name="cep"
+                    (blur)="getAddress($event.target.value)">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <span>Logradouro:</span>
+                <input type="text" class="form-control" [(ngModel)]="dados.logradouro" name="logradouro">
+            </div>
+            <div class="col-sm-2 form-group">
+                <span>numero:</span>
+                <input type="number" class="form-control" [(ngModel)]="dados.numero" name="numero">
+            </div>
+            <div class="col-sm-4 form-group">
+                <span>Bairro:</span>
+                <input type="text" class="form-control" [(ngModel)]="dados.bairro" name="bairro">
+            </div>
+            <div class="col-sm-4 form-group">
+                <span>Complemento:</span>
+                <input type="number" class="form-control" [(ngModel)]="dados.complemento" name="complemento">
+            </div>
+            <div class="col-sm-4 form-group">
+                <span>Cidade:</span>
+                <input type="text" class="form-control" [(ngModel)]="dados.cidade" name="cidade">
+            </div>
+            <div class="col-sm-2 form-group">
+                <span>UF:</span>
+                <input type="text" class="form-control" [(ngModel)]="dados.uf" name="uf">
+            </div>
+
+
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="close()">Voltar</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+
+    </div>
+</form>

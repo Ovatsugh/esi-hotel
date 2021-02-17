@@ -24,10 +24,14 @@
                 <td>{{item.id}}</td>
                 <td>{{item.nome}}</td>
                 <td>{{item.valor_venda}}</td>
-                <td>{{item.status}}</td>
+                <td scope="col">
+                    <span *ngIf="item.status == 0 ">Inativo</span>
+                    <span *ngIf="item.status == 1 ">Ativo</span>
+                </td>
                 <td>
-                    <button class="btn btn-sm btn-primary" (click)="open(item)">Editar<i class="fas fa-pen"></i></button>
-                    <button class="btn btn-sm btn-danger"(click)="deleteConfirm(item)">Excluir<i class="fas fa-trash"></i></button>
+                    
+                    <button class="btn btn-sm btn-primary mr-1" (click)="open(item)"><i class="fas fa-pen"></i></button>
+                    <button class="btn btn-sm btn-danger"(click)="deleteConfirm(item)"><i class="fas fa-trash"></i></button>
                 </td>
             </tr>
         </tbody>
