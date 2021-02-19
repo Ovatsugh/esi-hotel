@@ -1,3 +1,4 @@
+import { MessageService } from './../../../../services/message.service';
 import { ProductService } from './../../../../services/product.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -12,7 +13,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class ProductFormComponent implements OnInit {
   dados: any = {}
   @Input() data: any
-  constructor(private activeModal: NgbActiveModal, private service: ProductService) { }
+  constructor(private activeModal: NgbActiveModal, private service: ProductService, private messageService: MessageService) { }
 
   ngOnInit(): void {
     if (this.data.id > 0) {
@@ -27,13 +28,14 @@ export class ProductFormComponent implements OnInit {
   }
 
   getSingle() {
-  this.service.getProduct(this.data.id).then(res => {
-    this.dados = res
-  }).catch(err => {
-    console.log(err.error.message)
-  })
-  
-
+    this.messageService.loading(true)
+    this.service.getProduct(this.data.id).then(res => {
+      this.dados = res
+    }).catch(err => {
+      console.log(err.error.message)
+    }).finally(() => {
+      this.messageService.loading()
+    })
   }
 
   submit(form: NgForm) {

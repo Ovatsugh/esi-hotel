@@ -26,3 +26,12 @@ Route::group(['prefix'=> 'products'], function() {
     Route::delete("{id}", "ProductController@destroy");
 
 });
+
+Route::group(['prefix'=> 'clientes'], function() {
+    Route::get("", "ClienteController@listing");
+    Route::post("", "ClienteController@create");
+    Route::get("{id}", "ClienteController@show");
+    Route::put("{id}", "ClienteController@update");
+    Route::delete("{id}", "ClienteController@destroy");
+
+});
