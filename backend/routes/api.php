@@ -35,3 +35,18 @@ Route::group(['prefix'=> 'clientes'], function() {
     Route::delete("{id}", "ClienteController@destroy");
 
 });
+
+Route::group(['prefix'=> 'quartos'], function() {
+    Route::get("", "QuartoController@listing");
+    Route::post("", "QuartoController@create");
+    Route::get("{id}", "QuartoController@show");
+    Route::put("{id}", "QuartoController@update");
+    Route::delete("{id}", "QuartoController@destroy");
+
+});
+
+Route::group(['prefix'=> 'reception'], function() {
+    Route::get("", "QuartoController@getReception");
+    
+
+});

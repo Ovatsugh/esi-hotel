@@ -11,6 +11,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ClientesComponent } from './clientes/clientes.component';
 import { ClientesFormComponent } from './clientes/clientes-form/clientes-form.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { QuartosComponent } from './quartos/quartos.component';
+import { QuartoFormComponent } from './quartos/quarto-form/quarto-form.component';
+import { ReceptionComponent } from './reception/reception.component';
 
 
 
@@ -27,14 +30,22 @@ const rotas: Routes = [
       },
       {
         path: 'clientes', component: ClientesComponent
+      },
+      {
+        path: 'quartos', component: QuartosComponent
+
+      },
+      {
+        path: 'recepcao', component: ReceptionComponent
       }
+    
     ] 
   },
   
 ]
 
 @NgModule({
-  declarations: [AdminComponent, HomeComponent, ProductsComponent, ProductFormComponent, ClientesComponent, ClientesFormComponent],
+  declarations: [AdminComponent, HomeComponent, ProductsComponent, ProductFormComponent, ClientesComponent, ClientesFormComponent, QuartosComponent, QuartoFormComponent, ReceptionComponent],
   imports: [
     CommonModule,
     FormsModule,

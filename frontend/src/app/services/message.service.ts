@@ -39,11 +39,11 @@ export class MessageService {
 
     loading(type = false) {
         const load = document.getElementById("loading")
-        if (type == true) {
+        if (type == true) { // Se type for true, ele inicia o loading
             load.style.display = "flex"
 
         }
-        else {
+        else { // Não mostra
             load.style.display = "none"
 
         }
