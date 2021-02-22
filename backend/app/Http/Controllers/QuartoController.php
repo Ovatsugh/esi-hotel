@@ -37,7 +37,7 @@ class QuartoController extends Controller
         $dados = $request->all();
         $res = $this->model->create($dados);
         if (!$res->save()) {
-            return response()->json(["message" => "Não foi possível cadastrar o quarto."]);
+            return response()->json(["message" => "Não foi possível cadastrar o quarto."], 500);
         }
 
         return response()->json(["message" => "O quarto foi  cadatrado com sucesso", "dados" => $res], 201);
@@ -70,7 +70,7 @@ class QuartoController extends Controller
         $res = $this->model->find($id);
         $res->fill($dados);
         if (!$res->save()) {
-            return response()->json(["message" => "Não foi possível cadastrar o quarto."]);
+            return response()->json(["message" => "Não foi possível cadastrar o quarto."], 500);
         }
 
         return response()->json(["message" => "O quarto foi atualizado com sucesso", "dados" => $res], 201);
@@ -86,7 +86,7 @@ class QuartoController extends Controller
     {
         $res = $this->model->find($id);
         if (!$res->delete()) {
-            return response()->json(["message" => "Não foi possível deletar o quarto."]);
+            return response()->json(["message" => "Não foi possível deletar o quarto."], 500);
         }
         return response()->json(["message" => "O quarto foi excluido com sucesso"]);
     }
@@ -100,14 +100,35 @@ class QuartoController extends Controller
         $params = $request->all();
         $quartos = Quarto::all();
 
+
         foreach ($quartos as $quarto) {
             $using = QuartoUsing::where("quarto_id", $quarto->id)->where("status", 1)->first();
+            $quarto->using = $using;
             if (empty($using)) {
                 $quarto->open = 1;
-            }else {
+            } else {
                 $quarto->open = 0;
             }
         }
         return $quartos;
+    }
+
+    public function startDiaria(Request $request)
+    {
+        $params = $request->all();
+        $using = QuartoUsing::create([
+            'quarto_id' => $params['quarto_id'],
+            'data_start' => date('Y-m-d H:i:s')
+        ]);
+        if (!$using->save()) {
+            return response()->json(["message" => "Não foi possível iniciar a diária."], 500);
+        }
+        return response()->json($using);
+    }
+    public function usingId($id)
+    {
+        $using = QuartoUsing::find($id);
+        $using->quarto = Quarto::find($using->quarto_id);
+        return $using;
     }
 }

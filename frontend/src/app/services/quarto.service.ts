@@ -7,7 +7,7 @@ import { environment } from './../../environments/environment';
     providedIn: "root"
 })
 export class QuartoService {
-    
+
     url = environment.baseUrl;
     constructor(private http: HttpClient) { }
 
@@ -18,7 +18,7 @@ export class QuartoService {
     getQuartos(id): Promise<any> {
         return this.http.get(`${this.url}/quartos/${id}`).toPromise()
     }
-    
+
     create(dados: any): Promise<any> {
         return this.http.post(`${this.url}/quartos`, dados).toPromise();
     }
@@ -26,7 +26,7 @@ export class QuartoService {
     salvar(dados: any, id): Promise<any> {
         return this.http.put(`${this.url}/quartos/${id}`, dados).toPromise();
     }
-    
+
     delete(id): Promise<any> {
         return this.http.delete(`${this.url}/quartos/${id}`).toPromise()
     }
@@ -37,6 +37,14 @@ export class QuartoService {
     getReception(): Promise<any> {
         return this.http.get(`${this.url}/reception`).toPromise()
     }
-}
 
+    startDiaria(dados): Promise<any> {
+        return this.http.post(`${this.url}/reception`, dados).toPromise()
+    }
+
+    usingId(id): Promise<any> {
+        return this.http.get(`${this.url}/reception/${id}`).toPromise()
+
+    }
+}
 

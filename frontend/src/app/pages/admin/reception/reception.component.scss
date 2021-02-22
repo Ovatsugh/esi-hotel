@@ -1,0 +1,24 @@
+.card-custom {
+    display    : flex;
+    align-items: center;
+    padding    : 12px;
+    cursor     : pointer;
+
+    i {
+        font-size: 3rem;
+    }
+
+
+}
+
+.quarto-open {
+    color     : #fff;
+    background: #77b882;
+
+}
+
+.quarto-close {
+    color     : #fff;
+    background: #b67b7b;
+
+}

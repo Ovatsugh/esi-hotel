@@ -47,6 +47,8 @@ Route::group(['prefix'=> 'quartos'], function() {
 
 Route::group(['prefix'=> 'reception'], function() {
     Route::get("", "QuartoController@getReception");
-    
+    Route::post("", "QuartoController@startDiaria");
+    Route::get("{id}", "QuartoController@usingId");
+
 
 });

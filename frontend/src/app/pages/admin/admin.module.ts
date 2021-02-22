@@ -14,12 +14,14 @@ import { NgxMaskModule } from 'ngx-mask';
 import { QuartosComponent } from './quartos/quartos.component';
 import { QuartoFormComponent } from './quartos/quarto-form/quarto-form.component';
 import { ReceptionComponent } from './reception/reception.component';
+import { ReceptionFormComponent } from './reception/reception-form/reception-form.component';
+import { ReceptionDetalheComponent } from './reception/reception-detalhe/reception-detalhe.component';
 
 
 
 const rotas: Routes = [
   {
-    path: '', 
+    path: '',
     component: AdminComponent,
     children: [
       {
@@ -37,15 +39,20 @@ const rotas: Routes = [
       },
       {
         path: 'recepcao', component: ReceptionComponent
+      },
+      {
+        path: 'recepcao/detalhe', component: ReceptionDetalheComponent
       }
-    
-    ] 
+
+    ]
   },
-  
+
 ]
 
 @NgModule({
-  declarations: [AdminComponent, HomeComponent, ProductsComponent, ProductFormComponent, ClientesComponent, ClientesFormComponent, QuartosComponent, QuartoFormComponent, ReceptionComponent],
+  declarations: [AdminComponent, HomeComponent, ProductsComponent, ProductFormComponent, ClientesComponent,
+    ClientesFormComponent, QuartosComponent, QuartoFormComponent,
+    ReceptionComponent, ReceptionFormComponent],
   imports: [
     CommonModule,
     FormsModule,
